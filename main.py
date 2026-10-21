@@ -41,7 +41,7 @@ def fine_tune_model():
 
     if not torch.cuda.is_available():
         raise RuntimeError(
-            "Fine-tuning ke liye GPU chahiye. Google Colab GPU use karein."
+            "Runtime Error"
         )
 
     if not os.path.exists(DATA_PATH):
