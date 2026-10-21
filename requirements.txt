@@ -1,0 +1,12 @@
+streamlit
+torch
+datasets
+transformers
+peft
+accelerate
+langchain-community
+langchain-classic
+langchain-text-splitters
+sentence-transformers
+faiss-cpu
+pypdf
