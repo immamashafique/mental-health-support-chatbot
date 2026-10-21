@@ -22,18 +22,20 @@ from langchain_classic.memory import ConversationBufferMemory
 from langchain_classic.prompts import PromptTemplate
 from langchain_classic.chains import LLMChain
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-# ---------------- Configuration ----------------
+
+
+# Configuration
 
 MODEL_NAME = "thrishala/mental_health_chatbot"
 DATA_PATH = "mental_health_data.jsonl"
 ADAPTER_PATH = "./fine_tuned_model"
 PDF_PATH = r"D:\gen_ai\mental_health.pdf"
 
-# Set True to train; False to run the chatbot
+# set True to train and false to run the chatbot
 TRAIN_MODEL = False
 
 
-# ---------------- Fine-tuning ----------------
+# fine-tuning
 
 def fine_tune_model():
 
@@ -109,8 +111,7 @@ def fine_tune_model():
 
     print("Fine-tuning complete!")
 
-
-
+# load chatbot
 
 @st.cache_resource
 def load_chatbot():
@@ -138,7 +139,7 @@ def load_chatbot():
     return HuggingFacePipeline(pipeline=generator)
 
 
-# ---------------- PDF and FAISS ----------------
+# PDF loading
 
 @st.cache_resource
 def load_faiss():
@@ -164,7 +165,7 @@ def load_faiss():
     return FAISS.from_documents(chunks, embeddings)
 
 
-# ---------------- RAG response ----------------
+# generate response
 
 def generate_response(query, llm, vector_store, memory):
 
@@ -207,7 +208,7 @@ Answer:
     )
 
 
-# ---------------- Streamlit application ----------------
+# Streamlit application
 
 if TRAIN_MODEL:
     st.title("Fine-tune Mental Health Chatbot")
@@ -224,7 +225,7 @@ else:
     st.title("Mental Health Support Chatbot")
 
     st.warning(
-        "Educational support only; this chatbot does not provide diagnosis."
+        "Educational support only, this chatbot does not provide diagnosis."
     )
 
     try:
